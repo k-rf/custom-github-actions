@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
       - run: pnpm -C app install && pnpm -C app build && pnpm -C app build:smpale
       - uses: ./app/modules/example
       - uses: ./app/modules/sample
