@@ -3508,14 +3508,10 @@ require("./sourcemap-register.js");
 
     const run = () => {
       try {
-        _actions_core__WEBPACK_IMPORTED_MODULE_0___default().info(
-          "Hello World"
-        );
+        _actions_core__WEBPACK_IMPORTED_MODULE_0__.info("Hello World");
       } catch (err) {
         if (err instanceof Error)
-          _actions_core__WEBPACK_IMPORTED_MODULE_0___default().setFailed(
-            err.message
-          );
+          _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(err.message);
       }
     };
     run();
