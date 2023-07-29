@@ -2879,7 +2879,7 @@ __nccwpck_require__.r(__webpack_exports__);
 
 const run = () => {
     try {
-        _actions_core__WEBPACK_IMPORTED_MODULE_0__.info("Hello World");
+        _actions_core__WEBPACK_IMPORTED_MODULE_0__.info("Hello Actions");
     }
     catch (err) {
         if (err instanceof Error)

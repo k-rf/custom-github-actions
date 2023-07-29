@@ -1,0 +1,5 @@
+name: Sample
+description: Sample Action
+runs:
+  using: node16
+  main: dist/index.js
