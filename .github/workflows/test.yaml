@@ -15,6 +15,6 @@ jobs:
           version: 8
       - run: pnpm -C app install
       - run: pnpm -C app build
-      - run: pnpm -C app build:smpale
+      - run: pnpm -C app 'build:smpale'
       - uses: ./app/modules/example
       - uses: ./app/modules/sample
