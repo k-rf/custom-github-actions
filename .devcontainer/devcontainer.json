@@ -1,8 +1,8 @@
 {
-  "name": "custom-github-actions-root",
-  "remoteUser": "custom-github-actions-root",
-  "dockerComposeFile": "../docker-compose.dev.yaml",
-  "service": "root",
+  "name": "custom-github-actions",
+  "remoteUser": "custom-github-actions",
+  "dockerComposeFile": "./docker-compose.dev.yaml",
+  "service": "app",
   // "postAttachCommand": "pnpm install",
   "workspaceFolder": "/workspaces",
   "overrideCommand": true,

@@ -58,7 +58,7 @@ RUN mkdir -p ${REMOTE_HOME}/.config \
   echo 'format = "[$symbol]($style) "'; \
   echo ''; \
   echo '[nodejs]'; \
-  echo 'format = "via [⚡ $version](bold green) "'; \
+  echo 'format = "via [🐙 $version](bold green) "'; \
   } >> ${REMOTE_HOME}/.config/starship.toml
 
 # ローカルにパッケージのインストール
