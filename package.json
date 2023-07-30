@@ -4,8 +4,7 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky install",
-    "build": "ncc build modules/example/index.ts -o modules/example/dist --source-map",
-    "build:sample": "ncc build modules/sample/index.ts -o modules/sample/dist --source-map",
+    "build": "pnpm --filter './modules/**' build",
     "check:lint": "eslint --fix --cache .",
     "check:format": "prettier . --write",
     "check:type": "tsc --project tsconfig.json --pretty --noEmit",

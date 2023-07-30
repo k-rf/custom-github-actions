@@ -1,0 +1,11 @@
+{
+  "name": "@k-rf/action-builder",
+  "version": "0.0.1",
+  "license": "MIT",
+  "bin": {
+    "ab": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc *.ts --outDir dist"
+  }
+}
