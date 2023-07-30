@@ -13,8 +13,8 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: 8
-      - run: pnpm -C app install
-      - run: pnpm -C app build
-      - run: pnpm -C app build:sample
+      - run: pnpm install
+      - run: pnpm build
+      - run: pnpm build:sample
       - uses: ./app/modules/example
       - uses: ./app/modules/sample
