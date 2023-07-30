@@ -16,5 +16,5 @@ jobs:
       - run: pnpm install
       - run: pnpm build
       - run: pnpm build:sample
-      - uses: ./app/modules/example
-      - uses: ./app/modules/sample
+      - uses: ./modules/example
+      - uses: ./modules/sample
