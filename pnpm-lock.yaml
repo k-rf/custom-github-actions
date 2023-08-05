@@ -123,6 +123,9 @@ importers:
       '@k-rf/action-builder':
         specifier: workspace:*
         version: link:../action-builder
+      '@k-rf/types':
+        specifier: workspace:*
+        version: link:../types
 
   modules/types: {}
 

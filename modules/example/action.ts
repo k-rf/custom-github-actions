@@ -1,9 +1,9 @@
 import * as core from "@actions/core";
 
-import { Args } from "./args";
+import { Action } from "./action.meta";
 
 const run = (): void => {
-  const args = new Args();
+  const args = new Action();
 
   try {
     core.info(`I am ${args.name}, I am ${args.age} years old.`);

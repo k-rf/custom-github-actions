@@ -11,6 +11,7 @@
     "build:yaml": "ts-node-esm ./generate.ts"
   },
   "devDependencies": {
-    "@k-rf/action-builder": "workspace:*"
+    "@k-rf/action-builder": "workspace:*",
+    "@k-rf/types": "workspace:*"
   }
 }

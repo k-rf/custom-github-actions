@@ -1,5 +1,5 @@
-import { generate } from "@k-rf/action-builder/core";
+import { generate } from "@k-rf/action-builder";
 
-import { Args } from "./args";
+import { Action } from "./action.meta";
 
-generate(Args);
+generate(Action);

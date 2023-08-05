@@ -1,5 +1,5 @@
-name: "example"
-description: "example description"
+name: "Example (meta)"
+description: "Example description (meta)"
 inputs:
   name:
     description: "名前"

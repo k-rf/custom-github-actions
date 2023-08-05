@@ -1,5 +1,12 @@
-name: "sample"
-description: "sample description"
+name: "Sample (meta)"
+description: "Sample description (meta)"
+inputs:
+  name:
+    description: "名前"
+    default: "John"
+  age:
+    description: "年齢"
+    default: "42"
 runs:
   using: "node16"
   main: "dist/index.js"
