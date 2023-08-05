@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "license": "MIT",
   "exports": {
-    "./core": {
-      "import": "./dist/esm/core.js",
-      "require": "./dist/cjs/core.js",
-      "types": "./dist/types/core.d.ts"
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/index.d.ts"
     }
   },
   "scripts": {
