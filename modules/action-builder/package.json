@@ -2,10 +2,21 @@
   "name": "@k-rf/action-builder",
   "version": "0.0.1",
   "license": "MIT",
-  "bin": {
-    "ab": "./dist/index.js"
+  "exports": {
+    "./core": {
+      "import": "./dist/esm/core.js",
+      "require": "./dist/cjs/core.js",
+      "types": "./dist/types/core.d.ts"
+    }
   },
   "scripts": {
-    "build": "tsc *.ts --outDir dist"
+    "clean": "rimraf ./dist",
+    "build": "pnpm clean && pnpm build:cjs && pnpm build:esm",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:watch": "pnpm clean && run-p \"build:cjs -w\" \"build:esm -w\""
+  },
+  "devDependencies": {
+    "@k-rf/types": "workspace:*"
   }
 }

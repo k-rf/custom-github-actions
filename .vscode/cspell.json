@@ -17,6 +17,7 @@
     "prebuild",
     "prettierrc",
     "psql",
+    "scaffdog",
     "sonarjs",
     "storyshots",
     "tada",

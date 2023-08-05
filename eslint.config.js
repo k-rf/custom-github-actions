@@ -99,4 +99,15 @@ const tsRules = {
   },
 };
 
-module.exports = [...baseRules, tsRules];
+/** @type { import("eslint").Linter.FlatConfig } */
+const specRules = {
+  files: ["**/*.spec.{,c,m}{j,t}s"],
+  plugins: {
+    sonarjs: pluginSonarJs,
+  },
+  rules: {
+    "sonarjs/no-duplicate-string": "off",
+  },
+};
+
+module.exports = [...baseRules, tsRules, specRules];

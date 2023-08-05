@@ -1,5 +1,5 @@
-name: Sample
-description: Sample Action
+name: "sample"
+description: "sample description"
 runs:
-  using: node16
-  main: dist/index.js
+  using: "node16"
+  main: "dist/index.js"

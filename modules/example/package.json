@@ -1,11 +1,17 @@
 {
   "name": "example",
+  "description": "example description",
   "version": "1.0.0",
   "license": "MIT",
+  "private": true,
   "scripts": {
-    "build": "ncc build index.ts -o dist"
+    "clean": "rimraf dist",
+    "build": "npm-run-all -s build:action build:yaml",
+    "build:action": "pnpm clean && ncc build action.ts -o dist",
+    "build:yaml": "ts-node-esm ./generate.ts"
   },
   "devDependencies": {
-    "@k-rf/action-builder": "workspace:*"
+    "@k-rf/action-builder": "workspace:*",
+    "@k-rf/types": "workspace:*"
   }
 }

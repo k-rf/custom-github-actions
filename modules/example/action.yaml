@@ -1,5 +1,12 @@
-name: Example
-description: Example Action
+name: "example"
+description: "example description"
+inputs:
+  name:
+    description: "名前"
+    default: "John"
+  age:
+    description: "年齢"
+    default: "42"
 runs:
-  using: node16
-  main: dist/index.js
+  using: "node16"
+  main: "dist/index.js"
