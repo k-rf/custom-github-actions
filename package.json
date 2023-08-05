@@ -5,7 +5,9 @@
   "private": true,
   "scripts": {
     "prepare": "husky install",
-    "build": "pnpm --filter './modules/**' --filter '!./modules/action-builder' build",
+    "build": "npm-run-all -s build:ab build:action",
+    "build:ab": "pnpm -C ./modules/action-builder build",
+    "build:action": "pnpm --filter './modules/**' --filter '!./modules/action-builder' build",
     "check:lint": "eslint --fix --cache .",
     "check:format": "prettier . --write",
     "check:type": "tsc --project tsconfig.json --pretty --noEmit",
