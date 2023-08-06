@@ -8,7 +8,7 @@ export class Action extends Meta<Action> {
   @Input({ description: "名前", defaultValue: "John" })
   readonly name: string;
 
-  @Input({ description: "年齢", defaultValue: 42 })
+  @Input({ description: "年齢", defaultValue: 42, parser: "number" })
   readonly age: number;
 
   constructor() {

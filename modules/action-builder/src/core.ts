@@ -1,6 +1,5 @@
+import * as core from "@actions/core";
 import { Property, Primitive } from "@k-rf/types";
-
-import { ActionCoreHelper } from "./libs";
 
 export type TemplateProps = {
   name: string;
@@ -22,14 +21,17 @@ export const metadata: {
     inputName: string;
     inputDescription: string;
     inputDefault?: Primitive;
+    inputParser?: (value: string) => unknown;
   }[];
 } = {};
 
 export class Meta<Obj> {
-  private readonly coreHelper = new ActionCoreHelper<Property<Obj>>();
-
   protected getInput<K extends keyof Property<Obj>>(key: K): Obj[K] {
-    // TODO: すべて文字列で受け取るので、適切な値に変換する
-    return this.coreHelper.getInput(key);
+    const input = core.getInput(key as string);
+
+    const parser = metadata.inputs?.find((e) => e.inputName === key)
+      ?.inputParser;
+
+    return (parser ? parser(input) : input) as Obj[K];
   }
 }
