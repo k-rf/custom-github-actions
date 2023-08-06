@@ -9,6 +9,7 @@
     "devcontainer",
     "esbuild",
     "initdb",
+    "instanceof",
     "linebreak",
     "nestjs",
     "nothrow",

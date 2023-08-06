@@ -14,7 +14,8 @@
     "check:all": "npm-run-all -s check:type check:format check:lint",
     "test": "jest --runInBand",
     "test:cov": "jest --runInBand --coverage=true",
-    "test:watch": "jest --runInBand --watch"
+    "test:watch": "jest --runInBand --watch",
+    "scaffold": "scaffdog generate && pnpm install && pnpm check:format"
   },
   "dependencies": {
     "@actions/core": "^1.10.0",
