@@ -20,6 +20,7 @@ export const metadata: {
   inputs?: {
     inputName: string;
     inputDescription: string;
+    inputOptional?: boolean;
     inputDefault?: Primitive;
     inputParser?: (value: string) => unknown;
   }[];

@@ -2,8 +2,7 @@ import fs from "node:fs/promises";
 
 import { Meta } from "./core";
 import { ActionMeta, Input } from "./decorators";
-
-import { generate } from ".";
+import { generate } from "./generate";
 
 @ActionMeta({ name: "Test Action", description: "Test Action Description" })
 class TestAction extends Meta<TestAction> {
@@ -13,11 +12,15 @@ class TestAction extends Meta<TestAction> {
   @Input({ description: "address", defaultValue: "Japan" })
   address: string;
 
+  @Input({ description: "street", optional: true })
+  street: string | undefined;
+
   constructor() {
     super();
 
     this.name = this.getInput("name");
     this.address = this.getInput("address");
+    this.street = this.getInput("street");
   }
 }
 
@@ -52,6 +55,8 @@ describe("generate", () => {
         `  address:`,
         `    description: "address"`,
         `    default: "Japan"`,
+        `  street:`,
+        `    description: "street"`,
         `runs:`,
         `  using: "node16"`,
         `  main: "dist/index.js"`,

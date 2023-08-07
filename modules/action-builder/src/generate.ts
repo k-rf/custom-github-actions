@@ -38,7 +38,7 @@ const getInputs = () =>
       name: e.inputName,
       description: e.inputDescription,
       ...(e.inputDefault && { default: String(e.inputDefault) }),
-      required: !Boolean(e.inputDefault),
+      required: !(Boolean(e.inputOptional) || Boolean(e.inputDefault)),
     };
   });
 
