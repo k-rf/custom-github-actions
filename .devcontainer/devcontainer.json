@@ -3,7 +3,7 @@
   "remoteUser": "custom-github-actions",
   "dockerComposeFile": "./docker-compose.dev.yaml",
   "service": "app",
-  // "postAttachCommand": "pnpm install",
+  "postAttachCommand": "pnpm install",
   "workspaceFolder": "/workspaces",
   "overrideCommand": true,
   "shutdownAction": "none",
