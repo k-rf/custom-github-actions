@@ -6,10 +6,16 @@ import { metadata } from "../core";
 type InputProps = {
   description: string;
   defaultValue?: Primitive;
+  optional?: boolean;
   parser?: "boolean" | "number" | "string" | ((value: string) => unknown);
 };
 
-export const Input = ({ description, defaultValue, parser }: InputProps) => {
+export const Input = ({
+  description,
+  defaultValue,
+  optional,
+  parser,
+}: InputProps) => {
   return <T>(_target: T, fieldName: string) => {
     const inputParser = match(parser)
       .with(
@@ -25,6 +31,7 @@ export const Input = ({ description, defaultValue, parser }: InputProps) => {
       inputName: fieldName,
       inputDescription: description,
       inputDefault: defaultValue,
+      ...(optional && { inputOptional: optional }),
       ...(inputParser && { inputParser }),
     });
   };
