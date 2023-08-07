@@ -1,7 +1,7 @@
 /** @type { import("lint-staged").Config } */
 const config = {
   "*.{tsx,ts,js}": [
-    "bash -c 'yarn check:type'",
+    "bash -c 'pnpm check:type'",
     "prettier --write",
     "eslint --cache --fix",
   ],

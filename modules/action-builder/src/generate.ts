@@ -55,7 +55,7 @@ const createActionYaml = async (
       name: actionMeta.name,
       description: actionMeta.description,
       ...(inputs && { inputs }),
-    }).concat("\n"),
+    }),
     { encoding: "utf-8" }
   );
 };

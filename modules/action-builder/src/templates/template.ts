@@ -11,7 +11,7 @@ export const template = ({
   inputs,
   filename = "index.js",
 }: TemplateProps) => {
-  return [
+  const content = [
     `name: "${name}"`,
     `description: "${description}"`,
     createInputs(inputs, 1),
@@ -21,6 +21,15 @@ export const template = ({
   ]
     .filter(Boolean)
     .join("\n");
+
+  return [
+    `#########################################################`,
+    `# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY) #`,
+    `#########################################################`,
+    ``,
+    content,
+    ``,
+  ].join("\n");
 };
 
 /**

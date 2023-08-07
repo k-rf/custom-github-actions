@@ -46,6 +46,10 @@ describe("generate", () => {
     expect(output.file).toStrictEqual("./action.yaml");
     expect(output.data).toStrictEqual(
       [
+        `#########################################################`,
+        `# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY) #`,
+        `#########################################################`,
+        ``,
         `name: "Test Action"`,
         `description: "Test Action Description"`,
         `inputs:`,

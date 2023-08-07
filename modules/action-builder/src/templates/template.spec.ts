@@ -21,6 +21,10 @@ describe("template", () => {
 
     expect(actual).toStrictEqual(
       [
+        `#########################################################`,
+        `# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY) #`,
+        `#########################################################`,
+        ``,
         `name: "template"`,
         `description: "template description"`,
         `inputs:`,
@@ -33,6 +37,7 @@ describe("template", () => {
         `runs:`,
         `  using: "node16"`,
         `  main: "dist/index.js"`,
+        ``,
       ].join("\n")
     );
   });
@@ -46,11 +51,16 @@ describe("template", () => {
 
     expect(actual).toStrictEqual(
       [
+        `#########################################################`,
+        `# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY) #`,
+        `#########################################################`,
+        ``,
         `name: "template"`,
         `description: "template description"`,
         `runs:`,
         `  using: "node16"`,
         `  main: "dist/index.js"`,
+        ``,
       ].join("\n")
     );
   });
@@ -63,11 +73,16 @@ describe("template", () => {
 
     expect(actual).toStrictEqual(
       [
+        `#########################################################`,
+        `# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY) #`,
+        `#########################################################`,
+        ``,
         `name: "template"`,
         `description: "template description"`,
         `runs:`,
         `  using: "node16"`,
         `  main: "dist/index.js"`,
+        ``,
       ].join("\n")
     );
   });
@@ -81,11 +96,16 @@ describe("template", () => {
 
     expect(actual).toStrictEqual(
       [
+        `#########################################################`,
+        `# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY) #`,
+        `#########################################################`,
+        ``,
         `name: "template"`,
         `description: "template description"`,
         `runs:`,
         `  using: "node16"`,
         `  main: "dist/action.js"`,
+        ``,
       ].join("\n")
     );
   });
