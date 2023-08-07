@@ -1,6 +1,6 @@
 {
   "name": "@k-rf/types",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "license": "MIT",
   "exports": {
     ".": "./utility-types.ts"
