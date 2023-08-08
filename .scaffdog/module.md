@@ -1,15 +1,15 @@
 ---
-name: "module"
-root: "./modules"
+name: "package"
+root: "./packages"
 output: "."
-ignore: ["modules"]
+ignore: ["packages"]
 questions:
-  module: "Please enter module name."
+  package: "Please enter package name."
   name: "Please enter action name."
   description: "Please enter action description."
 ---
 
-# `{{ inputs.module | snake }}/action.meta.ts`
+# `{{ inputs.package | snake }}/action.meta.ts`
 
 ```ts
 import { ActionMeta, Input, Meta } from "@k-rf/action-builder";
@@ -31,14 +31,14 @@ export class Action extends Meta<Action> {
 }
 ```
 
-# `{{ inputs.module | snake }}/action.ts`
+# `{{ inputs.package | snake }}/action.ts`
 
 ```ts
 import * as core from "@actions/core";
 
 const run = (): void => {
   try {
-    core.info("Hello {{ inputs.module }}");
+    core.info("Hello {{ inputs.package }}");
   } catch (err) {
     if (err instanceof Error) core.setFailed(err.message);
   }
@@ -47,7 +47,7 @@ const run = (): void => {
 run();
 ```
 
-# `{{ inputs.module | snake }}/generate.ts`
+# `{{ inputs.package | snake }}/generate.ts`
 
 ```ts
 /****************************
@@ -61,11 +61,11 @@ import { Action } from "./action.meta";
 generate(Action);
 ```
 
-# `{{ inputs.module | snake }}/package.json`
+# `{{ inputs.package | snake }}/package.json`
 
 ```json
 {
-  "name": "{{ inputs.module | snake }}",
+  "name": "{{ inputs.package | snake }}",
   "version": "1.0.0",
   "license": "MIT",
   "private": true,
@@ -75,6 +75,7 @@ generate(Action);
     "build:action": "pnpm clean && ncc build action.ts -o dist",
     "build:yaml": "ts-node-esm ./generate.ts"
   },
+  "dependencies": {},
   "devDependencies": {
     "@k-rf/action-builder": "workspace:*",
     "@k-rf/types": "workspace:*"

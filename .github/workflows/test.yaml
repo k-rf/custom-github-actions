@@ -16,5 +16,5 @@ jobs:
           version: 8
       - run: pnpm install
       - run: pnpm build
-      - uses: ./modules/example
-      - uses: ./modules/sample
+      - uses: ./packages/example
+      - uses: ./packages/sample
