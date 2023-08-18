@@ -8,10 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v3
-        with:
-          name: custom-actions
-      - name: Unzip
-        run: unzip ./custom-actions.zip -d ./packages
       - uses: ./packages/example
       - uses: ./packages/sample

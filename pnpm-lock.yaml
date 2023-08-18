@@ -103,31 +103,31 @@ importers:
         specifier: ^5.1.6
         version: 5.1.6
 
-  packages/action-builder:
-    devDependencies:
-      '@k-rf/types':
-        specifier: workspace:*
-        version: link:../types
-
-  packages/example:
+  packages/actions/example:
     devDependencies:
       '@k-rf/action-builder':
         specifier: workspace:*
-        version: link:../action-builder
+        version: link:../../common/action-builder
       '@k-rf/types':
         specifier: workspace:*
-        version: link:../types
+        version: link:../../common/types
 
-  packages/sample:
+  packages/actions/sample:
     devDependencies:
       '@k-rf/action-builder':
         specifier: workspace:*
-        version: link:../action-builder
+        version: link:../../common/action-builder
+      '@k-rf/types':
+        specifier: workspace:*
+        version: link:../../common/types
+
+  packages/common/action-builder:
+    devDependencies:
       '@k-rf/types':
         specifier: workspace:*
         version: link:../types
 
-  packages/types: {}
+  packages/common/types: {}
 
 packages:
 
