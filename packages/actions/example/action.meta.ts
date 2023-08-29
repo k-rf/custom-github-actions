@@ -1,20 +1,20 @@
-import { ActionMeta, Input, Meta } from "@k-rf/action-builder";
+import { defineAction } from "@k-rf/action-builder";
 
-@ActionMeta({
-  name: "Example (meta)",
-  description: "Example description (meta)",
-})
-export class Action extends Meta<Action> {
-  @Input({ description: "名前", defaultValue: "John" })
-  readonly name: string;
-
-  @Input({ description: "年齢", defaultValue: 42, parser: "number" })
-  readonly age: number;
-
-  constructor() {
-    super();
-
-    this.name = this.getInput("name");
-    this.age = this.getInput("age");
-  }
-}
+export const action = defineAction
+  .actionMeta({
+    name: "Example (meta)",
+    description: "Example description (meta)",
+  })
+  .inputs((a) => ({
+    name: a.string("名前"),
+    bio: a.string("伝記").optional(),
+    country: a.string("国").default("日本"),
+    age: a.number("年齢"),
+    budget: a.number("予算").optional(),
+    level: a.number("レベル").default(42),
+    membership: a.boolean("メンバー"),
+    premium: a.boolean("プレミアム").optional(),
+    light: a.boolean("明るい").default(true),
+    bright: a.boolean("鮮やか").default(false),
+  }))
+  .parse();

@@ -2,8 +2,8 @@
  * DO NOT MODIFY THIS FILE! *
  ****************************/
 
-import { generate } from "@k-rf/action-builder";
+import { generateV2 } from "@k-rf/action-builder";
 
-import { Action } from "./action.meta";
+import { action } from "./action.meta";
 
-generate(Action);
+generateV2(action);

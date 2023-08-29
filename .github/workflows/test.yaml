@@ -8,5 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ./packages/example
-      - uses: ./packages/sample
+      - uses: ./packages/actions/sample
+      - uses: ./packages/actions/example
