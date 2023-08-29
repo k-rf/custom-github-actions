@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "prepare": "husky install",
-    "build": "npm-run-all -s build:ab build:action",
+    "build": "pnpm build:action",
+    "build:all": "npm-run-all -s build:ab build:action",
     "build:ab": "pnpm -C ./packages/common/action-builder build",
     "build:action": "pnpm --filter './packages/actions/**' build",
     "check:lint": "eslint --fix --cache .",
