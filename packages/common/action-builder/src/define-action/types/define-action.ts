@@ -33,3 +33,5 @@ export type ParseMetaFnReturn<T extends ActFnReturnObj<InputType>> = {
 export type ParsedInput<T extends ActFnReturnObj<InputType>> = Prettify<{
   [K in keyof T]: ReturnType<ReturnType<T[K]["parse"]>["getInput"]>;
 }>;
+
+export type ParsedActionMeta = ParseMetaFnReturn<ActFnReturnObj<InputType>>;

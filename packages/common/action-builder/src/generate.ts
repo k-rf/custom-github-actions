@@ -1,6 +1,7 @@
 import * as fs from "node:fs/promises";
 
 import { ActionMetaProps, metadata, TemplateProps } from "./core";
+import { ParsedActionMeta } from "./define-action/types";
 import { template } from "./templates";
 import { throwError } from "./utils";
 
@@ -14,6 +15,23 @@ export const generate = async (Action?: { new (): unknown }) => {
   const inputs = getInputs();
 
   await createActionYaml(actionMeta, inputs);
+};
+
+/**
+ * メタデータの情報をもとに、action.yaml を生成する
+ */
+export const generateV2 = async (action: ParsedActionMeta) => {
+  await createActionYaml(
+    action.meta.action,
+    action.meta.inputs.map((e) => {
+      return {
+        description: e.description,
+        name: e.name,
+        ...(e.default !== undefined && { default: String(e.default) }),
+        required: Boolean(e.required) && !Boolean(e.default),
+      };
+    })
+  );
 };
 
 /**

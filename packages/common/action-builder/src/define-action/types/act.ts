@@ -20,21 +20,23 @@ type ActFnReturnType<T extends InputType> = ActParse<T> &
   ActDefault<T>;
 
 /** パースの設定をする */
-type ActParse<T extends InputType> = {
+export type ActParse<T extends InputType> = {
   parse: ActParseFn<T>;
 };
-type ActParseFn<T extends InputType> = (key: string) => ActParseResult<T>;
-type ActParseResult<T extends InputType> = {
+type ActParseFn<T extends InputType> = (key: string) => ActParseFnReturn<T>;
+type ActParseFnReturn<T extends InputType> = {
   getInput: () => T;
 } & InputMeta;
 
 /** オプションの設定をする */
-type ActOptional<T extends InputType> = {
+export type ActOptional<T extends InputType> = {
   optional: () => ActParse<T | undefined>;
 };
 
 /** デフォルト値の設定をする */
-type ActDefault<T extends InputType> = { default: (value: T) => ActParse<T> };
+export type ActDefault<T extends InputType> = {
+  default: (value: T) => ActParse<T>;
+};
 
 /**
  * Act の関数が返す型のオブジェクト
