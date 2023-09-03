@@ -10,3 +10,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: ./packages/actions/sample
       - uses: ./packages/actions/example
+        with:
+          name: John Doe
+          age: 24
+          membership: true
