@@ -11,6 +11,9 @@ importers:
       '@actions/core':
         specifier: ^1.10.0
         version: 1.10.0
+      remeda:
+        specifier: ^1.26.0
+        version: 1.26.0
       ts-pattern:
         specifier: ^5.0.4
         version: 5.0.4
@@ -6309,6 +6312,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /remeda@1.26.0:
+    resolution: {integrity: sha512-v+Qbi2krvXknCvG60gviLUSBJQPxXUVBAvi64m3Awoua3X+ygAmPYPrbFgqwPpiM1tBHNBVrHPBKtza7if+HyQ==}
+    dev: false
 
   /repeat-string@1.6.1:
     resolution: {integrity: sha512-PV0dzCYDNfRi1jCDbJzpW7jNNDRuCOG/jI5ctQcGKt/clZD+YcPS3yIlWuTJMmESC8aevCFmWJy5wjAFgNqN6w==}
