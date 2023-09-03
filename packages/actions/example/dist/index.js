@@ -6640,7 +6640,12 @@ const run = () => {
     try {
         lib_core.info((0,commonjs.zip)(action.meta.inputs, (0,commonjs.values)(action.inputs))
             .map(([meta, input]) => {
-            return `${meta.name}: { required: ${meta.required}, default: ${meta.default}, input: '''${input}'''}`;
+            return `${meta.name}: {${[
+                `required: ${meta.required}`,
+                `default: ${meta.default}`,
+                `input: '${input}'`,
+                `type: ${typeof input}`,
+            ].join(", ")}}`;
         })
             .join("\n"));
     }

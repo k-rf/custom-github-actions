@@ -8,7 +8,12 @@ const run = (): void => {
     core.info(
       zip(action.meta.inputs, values(action.inputs))
         .map(([meta, input]) => {
-          return `${meta.name}: { required: ${meta.required}, default: ${meta.default}, input: '''${input}'''}`;
+          return `${meta.name}: {${[
+            `required: ${meta.required}`,
+            `default: ${meta.default}`,
+            `input: '${input}'`,
+            `type: ${typeof input}`,
+          ].join(", ")}}`;
         })
         .join("\n")
     );
