@@ -6537,7 +6537,10 @@ const actWith = (parser) => (description) => ({
 
 const actBoolean = actWith({
     required: (key) => lib_core.getInput(key, { required: true }).toLocaleLowerCase() === "true",
-    optional: (key) => lib_core.getInput(key).toLocaleLowerCase() === "true",
+    optional: (key) => {
+        const input = lib_core.getInput(key);
+        return input ? input.toLocaleLowerCase() === "true" : undefined;
+    },
 });
 
 ;// CONCATENATED MODULE: ../../common/action-builder/dist/esm/define-action/act/act-number.js
@@ -6560,9 +6563,7 @@ const actString = actWith({
     required: (key) => lib_core.getInput(key, { required: true }),
     optional: (key) => {
         const input = lib_core.getInput(key);
-        // TODO: これは `undefined` という文字を受け取れなくなる気がする
-        // 受け取れるようにする必要があるのか微妙だが…
-        return input === "undefined" ? undefined : input;
+        return input || undefined;
     },
 });
 
