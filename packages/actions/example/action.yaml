@@ -7,10 +7,31 @@ description: "Example description (meta)"
 inputs:
   name:
     description: "名前"
-    default: "John"
+    required: true
+  bio:
+    description: "伝記"
+  country:
+    description: "国"
+    default: "日本"
   age:
     description: "年齢"
+    required: true
+  budget:
+    description: "予算"
+  level:
+    description: "レベル"
     default: "42"
+  membership:
+    description: "メンバー"
+    required: true
+  premium:
+    description: "プレミアム"
+  light:
+    description: "明るい"
+    default: "true"
+  bright:
+    description: "鮮やか"
+    default: "false"
 runs:
   using: "node16"
   main: "dist/index.js"

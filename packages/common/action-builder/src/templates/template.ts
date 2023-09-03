@@ -1,6 +1,16 @@
-import { TemplateProps } from "../core";
-
 const TAB_WIDTH = 2;
+
+export type TemplateProps = {
+  name: string;
+  description: string;
+  inputs?: {
+    name: string;
+    description: string;
+    required?: boolean;
+    default?: string;
+  }[];
+  filename?: string;
+};
 
 /**
  * action.yaml のテンプレート

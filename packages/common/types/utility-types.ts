@@ -3,9 +3,7 @@
  *
  * REF: https://www.totaltypescript.com/concepts/the-prettify-helper
  */
-export type Prettify<T> = { [K in keyof T]: Prettify<T[K]> } extends infer U
-  ? U
-  : never;
+export type Prettify<T> = { [K in keyof T]: T[K] } & unknown;
 
 /**
  *  オプショナルな型に変換する

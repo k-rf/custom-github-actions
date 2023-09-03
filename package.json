@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "prepare": "husky install",
-    "build": "npm-run-all -s build:ab build:action",
+    "build": "pnpm build:action",
+    "build:all": "npm-run-all -s build:ab build:action",
     "build:ab": "pnpm -C ./packages/common/action-builder build",
     "build:action": "pnpm --filter './packages/actions/**' build",
     "check:lint": "eslint --fix --cache .",
@@ -23,6 +24,7 @@
   },
   "dependencies": {
     "@actions/core": "^1.10.0",
+    "remeda": "^1.26.0",
     "ts-pattern": "^5.0.4"
   },
   "devDependencies": {
