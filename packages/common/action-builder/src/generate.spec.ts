@@ -6,12 +6,11 @@ import { defineAction } from ".";
 
 const testAction = defineAction
   .actionMeta({ name: "Test Action", description: "Test Action Description" })
-  .inputs((a) => ({
+  .inputMeta((a) => ({
     name: a.string("name"),
     address: a.string("address").default("Japan"),
     street: a.string("street").optional(),
-  }))
-  .parse();
+  }));
 
 describe("generate", () => {
   let output: { file: string; data: string };

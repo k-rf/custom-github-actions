@@ -5,7 +5,7 @@ export const action = defineAction
     name: "Example (meta)",
     description: "Example description (meta)",
   })
-  .inputs((a) => ({
+  .inputMeta((a) => ({
     name: a.string("名前"),
     bio: a.string("伝記").optional(),
     country: a.string("国").default("日本"),
@@ -16,5 +16,4 @@ export const action = defineAction
     premium: a.boolean("プレミアム").optional(),
     light: a.boolean("明るい").default(true),
     bright: a.boolean("鮮やか").default(false),
-  }))
-  .parse();
+  }));

@@ -5,8 +5,7 @@ export const action = defineAction
     name: "Sample (meta)",
     description: "Sample description (meta)",
   })
-  .inputs((a) => ({
+  .inputMeta((a) => ({
     name: a.string("名前").default("John"),
     age: a.number("年齢").default(42),
-  }))
-  .parse();
+  }));

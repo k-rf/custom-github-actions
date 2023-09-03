@@ -9,18 +9,18 @@ export type DefineAction = {
 };
 type DefineActionFn = (actionMeta: ActionMeta) => {
   // TODO: 引数なしパターンに対応する
-  inputs: DefineInput;
+  inputMeta: DefineInput;
 };
 
 /** 入力のメタ情報の定義 */
 type DefineInput = <T extends ActFnReturnObj<InputType>>(
   createInput: DefineInputFn<T>
-) => { parse: ParseMetaFn<T> };
+) => ParseMetaFn<T>;
 type DefineInputFn<T extends ActFnReturnObj<InputType>> = (a: Act) => T;
 
 /** メタ情報をパースする */
 export type ParseMetaFn<T extends ActFnReturnObj<InputType>> =
-  () => ParseMetaFnReturn<T>;
+  ParseMetaFnReturn<T>;
 export type ParseMetaFnReturn<T extends ActFnReturnObj<InputType>> = {
   inputs: ParsedInput<T>;
   meta: {

@@ -22,8 +22,7 @@ export const action = defineAction
   .inputs((a) => ({
     // ここに入力の属性を定義してください。
     sample: a.string("サンプル"),
-  }))
-  .parse();
+  }));
 ```
 
 # `actions/{{ inputs.package | kebab }}/action.ts`

@@ -23,7 +23,7 @@ const action = defineAction
     name: "Test Action",
     description: "Test Action Description",
   })
-  .inputs((a) => ({
+  .inputMeta((a) => ({
     name: a.string("名前"),
     bio: a.string("伝記").optional(),
     country: a.string("国").default("日本"),
@@ -35,8 +35,7 @@ const action = defineAction
     light: a.boolean("明るい").default(true),
     bright: a.boolean("鮮やか").default(false),
     // TODO: date: a.date("date")
-  }))
-  .parse();
+  }));
 
 describe("defineAction", () => {
   const spy = jest.spyOn(core, "getInput").mockImplementation((name) => {

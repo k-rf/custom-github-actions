@@ -6498,29 +6498,27 @@ const actString = actWith({
 
 const defineAction = {
     actionMeta: (actionMeta) => ({
-        inputs: (inputDefinitionFn) => ({
-            parse: () => {
-                const act = inputDefinitionFn({
-                    string: actString,
-                    number: actNumber,
-                    boolean: actBoolean,
-                });
-                // TODO: `input` や `meta` を呼び出すたびにループが回るのでキャッシュする
-                return {
-                    get inputs() {
-                        return Object.entries(act)
-                            .map(([key, value]) => ({
-                            [key]: value.parse(key).getInput(),
-                        }))
-                            .reduce((p, c) => ({ ...p, ...c }), {});
-                    },
-                    meta: {
-                        action: actionMeta,
-                        inputs: Object.entries(act).map(([key, value]) => value.parse(key)),
-                    },
-                };
-            },
-        }),
+        inputMeta: (inputDefinitionFn) => {
+            const act = inputDefinitionFn({
+                string: actString,
+                number: actNumber,
+                boolean: actBoolean,
+            });
+            // TODO: `input` や `meta` を呼び出すたびにループが回るのでキャッシュする
+            return {
+                get inputs() {
+                    return Object.entries(act)
+                        .map(([key, value]) => ({
+                        [key]: value.parse(key).getInput(),
+                    }))
+                        .reduce((p, c) => ({ ...p, ...c }), {});
+                },
+                meta: {
+                    action: actionMeta,
+                    inputs: Object.entries(act).map(([key, value]) => value.parse(key)),
+                },
+            };
+        },
     }),
 };
 
@@ -6534,7 +6532,7 @@ const action = defineAction.actionMeta({
     name: "Example (meta)",
     description: "Example description (meta)",
 })
-    .inputs((a) => ({
+    .inputMeta((a) => ({
     name: a.string("名前"),
     bio: a.string("伝記").optional(),
     country: a.string("国").default("日本"),
@@ -6545,8 +6543,7 @@ const action = defineAction.actionMeta({
     premium: a.boolean("プレミアム").optional(),
     light: a.boolean("明るい").default(true),
     bright: a.boolean("鮮やか").default(false),
-}))
-    .parse();
+}));
 
 ;// CONCATENATED MODULE: ./action.ts
 
