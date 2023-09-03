@@ -4,7 +4,7 @@ import { actWith } from "./act-with";
 
 export const actNumber = actWith({
   required: (key) => {
-    return Number(core.getInput(key));
+    return Number(core.getInput(key, { required: true }));
   },
   optional: (key) => {
     const input = core.getInput(key);

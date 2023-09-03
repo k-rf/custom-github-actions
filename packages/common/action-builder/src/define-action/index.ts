@@ -13,14 +13,16 @@ export const defineAction: DefineAction = {
 
         // TODO: `input` や `meta` を呼び出すたびにループが回るのでキャッシュする
         return {
-          inputs: Object.entries(act)
-            .map(([key, value]) => ({
-              [key]: value.parse(key).getInput(),
-            }))
-            .reduce<ParsedInput<typeof act>>(
-              (p, c) => ({ ...p, ...c }),
-              {} as ParsedInput<typeof act>
-            ),
+          get inputs() {
+            return Object.entries(act)
+              .map(([key, value]) => ({
+                [key]: value.parse(key).getInput(),
+              }))
+              .reduce<ParsedInput<typeof act>>(
+                (p, c) => ({ ...p, ...c }),
+                {} as ParsedInput<typeof act>
+              );
+          },
           meta: {
             action: actionMeta,
             inputs: Object.entries(act).map(([key, value]) => value.parse(key)),

@@ -1,8 +1,8 @@
 import * as core from "@actions/core";
 
-import { Meta } from "./core";
-import { ActionMeta, Input } from "./decorators";
 import { objectEntries } from "./utils";
+
+import { defineAction } from ".";
 
 const fixture = {
   id: "123",
@@ -11,52 +11,34 @@ const fixture = {
   height: 192.1,
   isMember: false,
   isPremium: true,
-  date: new Date("2023-01-01T09:00:00"),
+  // TODO: date: new Date("2023-01-01T09:00:00"),
 };
 
-@ActionMeta({ name: "Test Action", description: "Test Action Description" })
-class TestAction extends Meta<TestAction> {
-  @Input({ description: "id" })
-  id: string;
-
-  @Input({ description: "name", parser: "string" })
-  name: string;
-
-  @Input({ description: "age", parser: "number" })
-  age: number;
-
-  @Input({ description: "height", parser: "number" })
-  height: number;
-
-  @Input({ description: "isMember", parser: "boolean" })
-  isMember: boolean;
-
-  @Input({ description: "isPremium", parser: "boolean" })
-  isPremium: boolean;
-
-  @Input({ description: "date", parser: (value) => new Date(value) })
-  date: Date;
-
-  constructor() {
-    super();
-
-    this.id = this.getInput("id");
-    this.name = this.getInput("name");
-    this.age = this.getInput("age");
-    this.height = this.getInput("height");
-    this.isMember = this.getInput("isMember");
-    this.isPremium = this.getInput("isPremium");
-    this.date = this.getInput("date");
-  }
-}
+const action = defineAction
+  .actionMeta({
+    name: "Test Action",
+    description: "Test Action Description",
+  })
+  .inputs((a) => ({
+    id: a.string("id"),
+    name: a.string("name"),
+    age: a.number("age"),
+    height: a.number("height"),
+    isMember: a.boolean("isMember"),
+    isPremium: a.boolean("isPremium"),
+    // TODO: date: a.date("date")
+  }));
 
 describe("core", () => {
   const spy = jest.spyOn(core, "getInput").mockImplementation((name) => {
     const target = objectEntries(fixture).find(([key]) => key === name)?.[1];
 
-    return target instanceof Date
-      ? target.toISOString()
-      : target?.toString() ?? "";
+    // TODO:
+    // return target instanceof Date
+    //   ? target.toISOString()
+    //   : target?.toString() ?? "";
+
+    return target?.toString() ?? "";
   });
 
   afterAll(() => {
@@ -64,10 +46,10 @@ describe("core", () => {
   });
 
   describe("指定したキーの値を対応する型にパースした値を返す", () => {
-    const sut = new TestAction();
+    const sut = action.parse();
 
     it.each(objectEntries(fixture))("%s: %s", (key, value) => {
-      expect(sut[key]).toStrictEqual(value);
+      expect(sut.inputs[key]).toStrictEqual(value);
     });
   });
 });
