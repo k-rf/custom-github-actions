@@ -3000,7 +3000,8 @@ const actWith = (parser) => (description) => ({
 
 
 const actBoolean = actWith({
-    required: (key) => lib_core.getInput(key).toLocaleLowerCase() === "true",
+    required: (key) => lib_core.getInput(key, { required: true }).toLocaleLowerCase() === "true",
+    optional: (key) => lib_core.getInput(key).toLocaleLowerCase() === "true",
 });
 
 ;// CONCATENATED MODULE: ../../common/action-builder/dist/esm/define-action/act/act-number.js
@@ -3008,7 +3009,7 @@ const actBoolean = actWith({
 
 const actNumber = actWith({
     required: (key) => {
-        return Number(lib_core.getInput(key));
+        return Number(lib_core.getInput(key, { required: true }));
     },
     optional: (key) => {
         const input = lib_core.getInput(key);
@@ -3020,7 +3021,7 @@ const actNumber = actWith({
 
 
 const actString = actWith({
-    required: lib_core.getInput,
+    required: (key) => lib_core.getInput(key, { required: true }),
     optional: (key) => {
         const input = lib_core.getInput(key);
         // TODO: これは `undefined` という文字を受け取れなくなる気がする
@@ -3051,11 +3052,13 @@ const defineAction = {
                 });
                 // TODO: `input` や `meta` を呼び出すたびにループが回るのでキャッシュする
                 return {
-                    inputs: Object.entries(act)
-                        .map(([key, value]) => ({
-                        [key]: value.parse(key).getInput(),
-                    }))
-                        .reduce((p, c) => ({ ...p, ...c }), {}),
+                    get inputs() {
+                        return Object.entries(act)
+                            .map(([key, value]) => ({
+                            [key]: value.parse(key).getInput(),
+                        }))
+                            .reduce((p, c) => ({ ...p, ...c }), {});
+                    },
                     meta: {
                         action: actionMeta,
                         inputs: Object.entries(act).map(([key, value]) => value.parse(key)),
