@@ -5,12 +5,16 @@ import { objectEntries } from "./utils";
 import { defineAction } from ".";
 
 const fixture = {
-  id: "123",
   name: "John Doe",
-  age: 42,
-  height: 192.1,
-  isMember: false,
-  isPremium: true,
+  bio: undefined,
+  country: "日本",
+  age: 24,
+  budget: undefined,
+  level: 42,
+  membership: true,
+  premium: undefined,
+  light: true,
+  bright: false,
   // TODO: date: new Date("2023-01-01T09:00:00"),
 };
 
@@ -20,12 +24,16 @@ const action = defineAction
     description: "Test Action Description",
   })
   .inputs((a) => ({
-    id: a.string("id"),
-    name: a.string("name"),
-    age: a.number("age"),
-    height: a.number("height"),
-    isMember: a.boolean("isMember"),
-    isPremium: a.boolean("isPremium"),
+    name: a.string("名前"),
+    bio: a.string("伝記").optional(),
+    country: a.string("国").default("日本"),
+    age: a.number("年齢"),
+    budget: a.number("予算").optional(),
+    level: a.number("レベル").default(42),
+    membership: a.boolean("メンバー"),
+    premium: a.boolean("プレミアム").optional(),
+    light: a.boolean("明るい").default(true),
+    bright: a.boolean("鮮やか").default(false),
     // TODO: date: a.date("date")
   }));
 
