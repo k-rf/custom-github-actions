@@ -1,28 +1,17 @@
 import fs from "node:fs/promises";
 
-import { Meta } from "./core";
-import { ActionMeta, Input } from "./decorators";
 import { generate } from "./generate";
 
-@ActionMeta({ name: "Test Action", description: "Test Action Description" })
-class TestAction extends Meta<TestAction> {
-  @Input({ description: "name" })
-  name: string;
+import { defineAction } from ".";
 
-  @Input({ description: "address", defaultValue: "Japan" })
-  address: string;
-
-  @Input({ description: "street", optional: true })
-  street: string | undefined;
-
-  constructor() {
-    super();
-
-    this.name = this.getInput("name");
-    this.address = this.getInput("address");
-    this.street = this.getInput("street");
-  }
-}
+const testAction = defineAction
+  .actionMeta({ name: "Test Action", description: "Test Action Description" })
+  .inputs((a) => ({
+    name: a.string("name"),
+    address: a.string("address").default("Japan"),
+    street: a.string("street").optional(),
+  }))
+  .parse();
 
 describe("generate", () => {
   let output: { file: string; data: string };
@@ -41,7 +30,7 @@ describe("generate", () => {
   });
 
   it("カスタムアクションのメタデータを YAML 形式で出力する", async () => {
-    await generate(TestAction);
+    await generate(testAction);
 
     expect(output.file).toStrictEqual("./action.yaml");
     expect(output.data).toStrictEqual(

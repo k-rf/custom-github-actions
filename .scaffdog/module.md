@@ -9,29 +9,24 @@ questions:
   description: "Please enter action description."
 ---
 
-# `{{ inputs.package | snake }}/action.meta.ts`
+# `actions/{{ inputs.package | kebab }}/action.meta.ts`
 
 ```ts
-import { ActionMeta, Input, Meta } from "@k-rf/action-builder";
+import { defineAction } from "@k-rf/action-builder";
 
-@ActionMeta({
-  name: "{{ inputs.name }}",
-  description: "{{ inputs.description }}",
-})
-export class Action extends Meta<Action> {
-  // Please define properties.
-  @Input({ description: "Example" })
-  readonly example: string;
-
-  constructor() {
-    super();
-
-    this.example = this.getInput("example");
-  }
-}
+export const action = defineAction
+  .actionMeta({
+    name: "{{ inputs.name }}",
+    description: "{{ inputs.description }}",
+  })
+  .inputs((a) => ({
+    // ここに入力の属性を定義してください。
+    sample: a.string("サンプル"),
+  }))
+  .parse();
 ```
 
-# `{{ inputs.package | snake }}/action.ts`
+# `actions/{{ inputs.package | kebab }}/action.ts`
 
 ```ts
 import * as core from "@actions/core";
@@ -47,7 +42,7 @@ const run = (): void => {
 run();
 ```
 
-# `{{ inputs.package | snake }}/generate.ts`
+# `actions/{{ inputs.package | kebab }}/generate.ts`
 
 ```ts
 /****************************
@@ -56,16 +51,16 @@ run();
 
 import { generate } from "@k-rf/action-builder";
 
-import { Action } from "./action.meta";
+import { action } from "./action.meta";
 
-generate(Action);
+generate(action);
 ```
 
-# `{{ inputs.package | snake }}/package.json`
+# `actions/{{ inputs.package | kebab }}/package.json`
 
 ```json
 {
-  "name": "{{ inputs.package | snake }}",
+  "name": "{{ inputs.package | kebab }}",
   "version": "1.0.0",
   "license": "MIT",
   "private": true,

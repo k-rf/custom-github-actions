@@ -35,7 +35,8 @@ const action = defineAction
     light: a.boolean("明るい").default(true),
     bright: a.boolean("鮮やか").default(false),
     // TODO: date: a.date("date")
-  }));
+  }))
+  .parse();
 
 describe("core", () => {
   const spy = jest.spyOn(core, "getInput").mockImplementation((name) => {
@@ -54,7 +55,7 @@ describe("core", () => {
   });
 
   describe("指定したキーの値を対応する型にパースした値を返す", () => {
-    const sut = action.parse();
+    const sut = action;
 
     it.each(objectEntries(fixture))("%s: %s", (key, value) => {
       expect(sut.inputs[key]).toStrictEqual(value);
