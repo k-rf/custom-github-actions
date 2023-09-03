@@ -1,6 +1,6 @@
 import * as core from "@actions/core";
 
-import { objectEntries } from "./utils";
+import { objectEntries } from "../utils";
 
 import { defineAction } from ".";
 
@@ -38,7 +38,7 @@ const action = defineAction
   }))
   .parse();
 
-describe("core", () => {
+describe("defineAction", () => {
   const spy = jest.spyOn(core, "getInput").mockImplementation((name) => {
     const target = objectEntries(fixture).find(([key]) => key === name)?.[1];
 

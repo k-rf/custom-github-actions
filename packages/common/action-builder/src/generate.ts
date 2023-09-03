@@ -1,8 +1,7 @@
 import * as fs from "node:fs/promises";
 
-import { ActionMetaProps, TemplateProps } from "./core";
-import { ParsedActionMeta } from "./define-action/types";
-import { template } from "./templates";
+import { ActionMeta, ParsedActionMeta } from "./define-action/types";
+import { TemplateProps, template } from "./templates";
 
 /**
  * メタデータの情報をもとに、action.yaml を生成する
@@ -25,7 +24,7 @@ export const generate = async (action: ParsedActionMeta) => {
  * action.yaml を出力する
  */
 const createActionYaml = async (
-  actionMeta: ActionMetaProps,
+  actionMeta: ActionMeta,
   inputs: TemplateProps["inputs"]
 ) => {
   await fs.writeFile(

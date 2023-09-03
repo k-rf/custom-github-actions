@@ -6382,21 +6382,9 @@ var __webpack_exports__ = {};
 __nccwpck_require__.r(__webpack_exports__);
 
 // EXTERNAL MODULE: ../../../node_modules/.pnpm/@actions+core@1.10.0/node_modules/@actions/core/lib/core.js
-var lib_core = __nccwpck_require__(4139);
+var core = __nccwpck_require__(4139);
 // EXTERNAL MODULE: ../../../node_modules/.pnpm/remeda@1.26.0/node_modules/remeda/dist/commonjs/index.js
 var commonjs = __nccwpck_require__(1219);
-;// CONCATENATED MODULE: ../../common/action-builder/dist/esm/core.js
-
-const metadata = {};
-class Meta {
-    getInput(key) {
-        const input = core.getInput(key);
-        const parser = metadata.inputs?.find((e) => e.inputName === key)
-            ?.inputParser;
-        return (parser ? parser(input) : input);
-    }
-}
-
 ;// CONCATENATED MODULE: external "node:fs/promises"
 const promises_namespaceObject = require("node:fs/promises");
 ;// CONCATENATED MODULE: ../../common/action-builder/dist/esm/generate.js
@@ -6466,9 +6454,9 @@ const actWith = (parser) => (description) => ({
 
 
 const actBoolean = actWith({
-    required: (key) => lib_core.getInput(key, { required: true }).toLocaleLowerCase() === "true",
+    required: (key) => core.getInput(key, { required: true }).toLocaleLowerCase() === "true",
     optional: (key) => {
-        const input = lib_core.getInput(key);
+        const input = core.getInput(key);
         return input ? input.toLocaleLowerCase() === "true" : undefined;
     },
 });
@@ -6478,10 +6466,10 @@ const actBoolean = actWith({
 
 const actNumber = actWith({
     required: (key) => {
-        return Number(lib_core.getInput(key, { required: true }));
+        return Number(core.getInput(key, { required: true }));
     },
     optional: (key) => {
-        const input = lib_core.getInput(key);
+        const input = core.getInput(key);
         return input ? Number(input) : undefined;
     },
 });
@@ -6490,9 +6478,9 @@ const actNumber = actWith({
 
 
 const actString = actWith({
-    required: (key) => lib_core.getInput(key, { required: true }),
+    required: (key) => core.getInput(key, { required: true }),
     optional: (key) => {
-        const input = lib_core.getInput(key);
+        const input = core.getInput(key);
         return input || undefined;
     },
 });
@@ -6540,7 +6528,6 @@ const defineAction = {
 
 
 
-
 ;// CONCATENATED MODULE: ./action.meta.ts
 
 const action = defineAction.actionMeta({
@@ -6567,7 +6554,7 @@ const action = defineAction.actionMeta({
 
 const run = () => {
     try {
-        lib_core.info((0,commonjs.zip)(action.meta.inputs, (0,commonjs.values)(action.inputs))
+        core.info((0,commonjs.zip)(action.meta.inputs, (0,commonjs.values)(action.inputs))
             .map(([meta, input]) => {
             return `${meta.name}: {${[
                 `required: ${meta.required}`,
@@ -6580,7 +6567,7 @@ const run = () => {
     }
     catch (err) {
         if (err instanceof Error)
-            lib_core.setFailed(err.message);
+            core.setFailed(err.message);
     }
 };
 run();
